@@ -1,13 +1,10 @@
-# A Makefile for building the phonebook program
-
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++11
-OBJ = main.o phonebook.o
+CXXFLAGS = -std=c++17
 
-all: phonebook_app
+all: phonebook
 
-phonebook_app: $(OBJ)
-	$(CXX) $(CXXFLAGS) -o phonebook_app $(OBJ)
+phonebook: main.o phonebook.o
+	$(CXX) $(CXXFLAGS) -o phonebook main.o phonebook.o
 
 main.o: main.cpp phonebook.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -16,4 +13,4 @@ phonebook.o: phonebook.cpp phonebook.h
 	$(CXX) $(CXXFLAGS) -c phonebook.cpp
 
 clean:
-	rm -f *.o phonebook_app
+	rm -f *.o phonebook
